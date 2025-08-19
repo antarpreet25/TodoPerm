@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include("partials/header") %>
+
+  <main>
+    <form action="/add" method="POST" class="add-form">
+      <input type="text" name="task" placeholder="Enter a new task" />
+      <select name="priority">
+        <option value="low">Low</option>
+        <option value="high">High</option>
+        <option value="urgent">Urgent</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="alert"><%= error %></p>
+    <% } %>
+
+    <ul>
+      <% tasks.forEach((t) => { %>
+        <li>
+          <form action="/edit/<%= t.id %>" method="POST" class="edit-form">
+            <input type="text" name="task" value="<%= t.name %>" />
+            <select name="priority">
+              <option value="low" <%= t.priority === "low" ? "selected" : "" %>>Low</option>
+              <option value="high" <%= t.priority === "high" ? "selected" : "" %>>High</option>
+              <option value="urgent" <%= t.priority === "urgent" ? "selected" : "" %>>Urgent</option>
+            </select>
+            <button type="submit">Update</button>
+          </form>
+
+          <form action="/delete/<%= t.id %>" method="POST" class="delete-form">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
+
+  <%- include("partials/footer") %>
+</body>
+</html>

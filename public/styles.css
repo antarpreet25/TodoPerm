@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header, footer {
+  background: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.add-form, .edit-form, .delete-form {
+  margin: 10px;
+  display: inline-block;
+}
+
+input, select, button {
+  padding: 5px;
+  margin: 5px;
+}
+
+.filters a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: blue;
+}
