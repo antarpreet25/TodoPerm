@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -27,7 +27,8 @@
     <ul>
       <% tasks.forEach((t) => { %>
         <li>
-          <form action="/edit/<%= t.id %>" method="POST" class="edit-form">
+          <!-- Edit form using PUT -->
+          <form action="/edit/<%= t.id %>?_method=PUT" method="POST" class="edit-form">
             <input type="text" name="task" value="<%= t.name %>" />
             <select name="priority">
               <option value="low" <%= t.priority === "low" ? "selected" : "" %>>Low</option>
@@ -37,7 +38,8 @@
             <button type="submit">Update</button>
           </form>
 
-          <form action="/delete/<%= t.id %>" method="POST" class="delete-form">
+          <!-- Delete form using DELETE -->
+          <form action="/delete/<%= t.id %>?_method=DELETE" method="POST" class="delete-form">
             <button type="submit">Delete</button>
           </form>
         </li>
